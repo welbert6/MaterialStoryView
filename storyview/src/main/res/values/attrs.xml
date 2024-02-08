@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <declare-styleable name="StoriesProgressView">
         <attr name="progressCount" format="integer|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="StoryView">
+        <attr name="storyImageRadius" format="dimension"/>
+        <attr name="storyItemIndicatorWidth" format="dimension"/>
+        <attr name="spaceBetweenImageAndIndicator" format="dimension"/>
+        <attr name="pendingIndicatorColor" format="color"/>
+        <attr name="visitedIndicatorColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="StoryPlayerProgressView">
+        <attr name="progressBarHeight" format="dimension"/>
+        <attr name="gapBetweenProgressBar" format="dimension"/>
+        <attr name="progressBarPrimaryColor" format="color"/>
+        <attr name="progressBarSecondaryColor" format="color"/>
+        <attr name="singleStoryDisplayTime" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="MaterialCarouselStoryView">
+        <attr name="miniStoryTextSize" format="dimension"/>
+        <attr name="miniStoryTextColor" format="color"/>
+        <attr name="miniStoryTextFont" format="reference"/>
+        <attr name="miniStoryVisitedIndicatorColor" format="color"/>
+        <attr name="miniStoryPendingIndicatorColor" format="color"/>
+        <attr name="miniStoryImageRadius" format="dimension"/>
+        <attr name="miniSpaceBetweenImageAndIndicator" format="dimension"/>
+        <attr name="miniStoryItemIndicatorWidth" format="dimension"/>
+        <attr name="storyProgressBarPrimaryColor" format="color"/>
+        <attr name="storyProgressBarSecondaryColor" format="color"/>
+        <attr name="storyProgressBarHeight" format="dimension"/>
+        <attr name="storyGapBetweenProgressBar" format="dimension"/>
+        <attr name="storySingleStoryDisplayTime" format="integer"/>
+        <attr name="storyDuration" format="integer"/>
     </declare-styleable>
 </resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StoryPlayer">
+
+    <ImageView
+        android:id="@+id/storyImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:padding="4dp">
+
+        <com.moreirasoft.materialstoryview.presentation.StoryPlayerProgressView
+            android:id="@+id/progressBarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:gapBetweenProgressBar="2dp"
+            app:progressBarHeight="1dp"
+            app:progressBarPrimaryColor="#ffffff"
+            app:progressBarSecondaryColor="#3effffff" />
+
+        <TextView
+            android:id="@+id/storyUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progressBarView"
+            android:layout_marginStart="8dp"
+            android:text="Ankit Kumar"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/storyTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/storyUserName"
+            android:layout_marginStart="8dp"
+            android:text="12:00 PM"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

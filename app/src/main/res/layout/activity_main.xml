@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> activity.showStories()}"
-            android:text="Show"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:text="Example of storys"/>
+
+
+
+        <com.moreirasoft.materialstoryview.presentation.CarouselStoryView
+            android:id="@+id/sqwfrwe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            android:layout_margin="10dp"
+            android:background="#00000000"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:miniStoryTextColor="#000"
+            app:miniStoryPendingIndicatorColor="#7B1FA2"
+            app:miniStoryImageRadius="36dp"
+            app:miniSpaceBetweenImageAndIndicator="1dp"
+            app:miniStoryItemIndicatorWidth="1.5dp"
+            app:storyDuration="16000"
+            tools:listitem="@layout/item_mini_story"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <data>
-
-        <variable
-            name="activity"
-            type="omari.hamza.storyviewdemo.MainActivity" />
-
-    </data>
-</layout>
+</LinearLayout>

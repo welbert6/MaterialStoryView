@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<omari.hamza.storyview.utils.PullDismissLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.moreirasoft.materialstoryview.utils.PullDismissLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pull_dismiss_layout"
@@ -12,19 +12,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/storiesViewPager"
             android:layout_width="0dp"
-            android:background="#707070"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
         </androidx.viewpager.widget.ViewPager>
 
-        <omari.hamza.storyview.progress.StoriesProgressView
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.18" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="50dp"
+            android:src="@drawable/topbgheaderstory"
+            app:layout_constraintBottom_toBottomOf="@id/guidelineTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <com.moreirasoft.materialstoryview.progress.StoriesProgressView
             android:id="@+id/storiesProgressView"
             android:layout_width="0dp"
             android:layout_height="3dp"
@@ -54,20 +74,19 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:textColor="@color/white"
-            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/subtitle_textView"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
             app:layout_constraintStart_toEndOf="@+id/titleCardView"
             app:layout_constraintTop_toBottomOf="@+id/storiesProgressView"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="Hamza Al-Omari 2h" />
+            tools:text="Welbert Moreira"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/subtitle_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="gone"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/titleCardView"
@@ -75,30 +94,39 @@
             app:layout_constraintStart_toEndOf="@+id/titleCardView"
             app:layout_constraintTop_toBottomOf="@+id/title_textView"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="Berlin" />
+            tools:text="Há duas horas atrás"
+            tools:visibility="visible" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/titleCardView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:visibility="gone"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:cardCornerRadius="25dp"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storiesProgressView">
+            app:layout_constraintTop_toBottomOf="@+id/storiesProgressView"
+            tools:visibility="visible">
 
             <ImageView
-                android:id="@+id/title_imageView"
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                tools:src="@tools:sample/avatars" />
 
 
         </androidx.cardview.widget.CardView>
 
+
+
+
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</omari.hamza.storyview.utils.PullDismissLayout>
+</com.moreirasoft.materialstoryview.utils.PullDismissLayout>
