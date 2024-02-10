@@ -43,7 +43,7 @@ class CarouselStoryView(context: Context, attrs: AttributeSet?) : RecyclerView(c
 
             val miniPendingIndicatorColor = ats.getColor(
                 R.styleable.MaterialCarouselStoryView_miniStoryPendingIndicatorColor,
-                resources.getColor(R.color.miniStoryPendingIndicatorColor),
+                resources.getColor(R.color.miniStoryPendingIndicatorColor, resources.newTheme()),
             )
 
             val storyDuration = ats.getInteger(
