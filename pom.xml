@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
-  <modelVersion>1.0.0</modelVersion>
-  <groupId>com.github.welbert6</groupId>
-  <artifactId>MaterialStoryView</artifactId>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <description>First version</description>
-</project>
