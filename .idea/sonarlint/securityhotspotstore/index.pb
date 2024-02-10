@@ -64,3 +64,7 @@ D
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
+?
+settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec

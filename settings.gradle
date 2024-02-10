@@ -7,6 +7,3 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-dependencies {
-    implementation 'com.github.welbert6:MaterialStoryView:1.0.0'
-}
