@@ -26,6 +26,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -47,5 +48,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.github.welbert6:MaterialStoryView:1.0.0'
+    implementation  'com.moreirasoft.materialstoryview:0.0.0'
 }

@@ -1,8 +1,9 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
-
+apply plugin: 'maven-publish'
 android {
     namespace 'com.moreirasoft.materialstoryview'
     compileSdk 34
@@ -21,7 +22,7 @@ android {
         }
     }
 
-    dataBinding{
+    dataBinding {
         enabled true
     }
 
@@ -33,17 +34,30 @@ android {
         jvmTarget = '1.8'
     }
 }
-/*
+
 publishing {
     publications {
         bar(MavenPublication) {
             groupId "com.moreirasoft"
-            artifactId "materialStoryView"
+            artifactId "materialstoryview"
             version "0.0.0"
-         }
+            artifact("$buildDir/outputs/aar/storyview-release.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/welbert6/MaterialStoryView")
+            credentials {
+                username("welbert6")
+                password System.getenv("GITHUB_TOKEN")
+            }
+        }
+        maven { url('https://jitpack.io') }
     }
 }
-*/
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -57,5 +71,19 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.palette:palette:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId "com.moreirasoft"
+                artifactId "materialstoryview"
+                version "0.0.0"
+                //artifact("$buildDir/outputs/aar/storyview-release.aar")
+            }
+        }
+    }
 }
 
