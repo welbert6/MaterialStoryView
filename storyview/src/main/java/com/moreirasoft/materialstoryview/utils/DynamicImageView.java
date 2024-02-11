@@ -3,7 +3,6 @@ package com.moreirasoft.materialstoryview.utils;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 public class DynamicImageView extends androidx.appcompat.widget.AppCompatImageView {
 
