@@ -1,0 +1,5 @@
+<dependency>
+    <groupId>com.moreirasoft</groupId>
+    <artifactId>materialstoryview</artifactId>
+    <version>0.0.0</version>
+</dependency>
