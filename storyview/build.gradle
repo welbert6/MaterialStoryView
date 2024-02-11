@@ -3,9 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
-apply plugin: 'maven-publish'
+
 android {
     namespace 'com.moreirasoft.materialstoryview'
+
     compileSdk 34
     defaultConfig {
         minSdk 24
@@ -34,7 +35,7 @@ android {
         jvmTarget = '1.8'
     }
 }
-
+/*
 publishing {
     publications {
         bar(MavenPublication) {
@@ -56,7 +57,7 @@ publishing {
         }
         maven { url('https://jitpack.io') }
     }
-}
+}*/
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

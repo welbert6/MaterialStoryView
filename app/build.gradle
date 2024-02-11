@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+
     defaultConfig {
         applicationId "com.moreirasoft.storyviewdemo"
         compileSdk  34
@@ -34,9 +35,10 @@ android {
     dataBinding {
         enabled = true
     }
-    namespace 'com.moreirasoft.storyviewdemo'
+    namespace 'com.moreirasoft.materialstoryview'
 
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -48,5 +50,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation  'com.moreirasoft.materialstoryview:0.0.0'
+    implementation project(path: ':storyview')
 }
