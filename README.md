@@ -4,7 +4,7 @@
 
 ![Screenshots](images/screenshots.jpg)
 
-##Introduction
+## Introduction
 
 MaterialStoryView is an Android library for implementing a story carousel, similar to those found on social networks like Instagram and Facebook. This library makes it easy to add a story viewing component to your Android application, allowing for quick and simple integration. 
 
