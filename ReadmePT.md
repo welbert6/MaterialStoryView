@@ -1,6 +1,6 @@
 # StoryView
 
-You can read this in engligh (https://github.com/welbert6/MaterialStoryView/blob/master/README.md)
+You can read this in engligh [https://github.com/welbert6/MaterialStoryView/blob/master/README.md](https://github.com/welbert6/MaterialStoryView/blob/master/ReadmePT.md)
 
 ## Screenshots
 ![Screenshots](images/Screenshot_7.png)
