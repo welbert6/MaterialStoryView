@@ -72,7 +72,7 @@ val carrosselStoryView: CarouselStoryView = findViewById(R.id.carouselStoryView)
 //Ensure to call init With Activity to init lib
 carrosselStoryView.initWithActivity(this)
 
-// You can addStory or addStories with you have a list of stories 
+// You can addStory or addStories if you have a list of stories 
 carrosselStoryView.addStory(getCopasaStories())
 carrosselStoryView.addStory(getCemigStories())
 carrosselStoryView.addStory(getCminStories())
