@@ -1,7 +1,9 @@
 # StoryView
 
 ## Screenshots
-![Screenshots](images/screenshots_7.png)
+![Screenshots](images/Screenshot_7.png)
+
+
 ![Screenshots](images/screenshots.jpg)
 
 ## Introduction
