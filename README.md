@@ -1,7 +1,7 @@
 # StoryView
 
 
-Você pode ler em português (https://github.com/welbert6/MaterialStoryView/edit/master/ReadmePT.md)
+Você pode ler em português ([https://github.com/welbert6/MaterialStoryView/edit/master/ReadmePT.md](https://github.com/welbert6/MaterialStoryView/blob/master/ReadmePT.md))
 
 ## Screenshots
 ![Screenshots](images/Screenshot_7.png)
