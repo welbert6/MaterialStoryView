@@ -4,7 +4,8 @@
 ![Screenshots](images/Screenshot_7.png)
 
 
-![Screenshots](images/Screenshot1.png)
+
+<img src="images/Screenshot1.png" width="480">
 
 ## Introduction
 
