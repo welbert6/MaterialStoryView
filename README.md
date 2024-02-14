@@ -1,5 +1,5 @@
 # StoryView
-
+[![](https://jitpack.io/v/welbert6/MaterialStoryView.svg)](https://jitpack.io/#welbert6/MaterialStoryView)
 
 Você pode ler em português ([https://github.com/welbert6/MaterialStoryView/edit/master/ReadmePT.md](https://github.com/welbert6/MaterialStoryView/blob/master/ReadmePT.md))
 
