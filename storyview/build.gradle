@@ -33,29 +33,20 @@ android {
     }
 
 }
-/*
-publishing {
-    publications {
-        bar(MavenPublication) {
-            groupId "com.moreirasoft"
-            artifactId "materialstoryview"
-            version "0.0.0"
-            artifact("$buildDir/outputs/aar/storyview-release.aar")
-        }
-    }
-
-    repositories {
-        maven {
-            name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/welbert6/MaterialStoryView")
-            credentials {
-                username("welbert6")
-                password System.getenv("GITHUB_TOKEN")
+project.afterEvaluate {
+    publishing {
+        publications {
+            bar(MavenPublication) {
+                groupId "com.github.welbert6"
+                artifactId "materialstoryview"
+                version "0.0.36-SNAPSHOT"
+                artifact("$buildDir/outputs/aar/storyview-release.aar")
             }
         }
-        maven { url('https://jitpack.io') }
     }
-}*/
+}
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

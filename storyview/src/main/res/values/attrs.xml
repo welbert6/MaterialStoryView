@@ -28,7 +28,7 @@
         <attr name="miniStoryVisitedIndicatorColor" format="color"/>
         <attr name="miniStoryPendingIndicatorColor" format="color"/>
         <attr name="miniStoryImageRadius" format="dimension"/>
-        <attr name="miniSpaceBetweenImageAndIndicator" format="dimension"/>
+        <attr name="miniStorySpaceBetweenImageAndIndicator" format="dimension"/>
         <attr name="miniStoryItemIndicatorWidth" format="dimension"/>
         <attr name="storyProgressBarPrimaryColor" format="color"/>
         <attr name="storyProgressBarSecondaryColor" format="color"/>

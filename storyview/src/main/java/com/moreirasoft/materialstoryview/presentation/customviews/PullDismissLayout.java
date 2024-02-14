@@ -1,4 +1,4 @@
-package com.moreirasoft.materialstoryview.utils;
+package com.moreirasoft.materialstoryview.presentation.customviews;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

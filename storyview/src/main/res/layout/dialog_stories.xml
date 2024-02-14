@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.moreirasoft.materialstoryview.utils.PullDismissLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.moreirasoft.materialstoryview.presentation.customviews.PullDismissLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pull_dismiss_layout"
@@ -44,7 +44,7 @@
 
 
 
-        <com.moreirasoft.materialstoryview.progress.StoriesProgressView
+        <com.moreirasoft.materialstoryview.presentation.progress.StoriesProgressView
             android:id="@+id/storiesProgressView"
             android:layout_width="0dp"
             android:layout_height="3dp"
@@ -129,4 +129,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.moreirasoft.materialstoryview.utils.PullDismissLayout>
+</com.moreirasoft.materialstoryview.presentation.customviews.PullDismissLayout>

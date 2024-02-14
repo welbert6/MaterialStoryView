@@ -1,13 +1,11 @@
-package com.moreirasoft.materialstoryview.utils;
+package com.moreirasoft.materialstoryview.presentation.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +15,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
@@ -62,31 +61,39 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         final ImageView mImageView = view.findViewById(R.id.mImageView);
 
-        if (!TextUtils.isEmpty(currentStory.getTitle())) {
+        final boolean hasTitle = !TextUtils.isEmpty(currentStory.getTitle());
+        final boolean hasDescription = !TextUtils.isEmpty(currentStory.getDescription());
+
+        if (hasTitle) {
             TextView textView = view.findViewById(R.id.txtStoryTitle);
             textView.setVisibility(View.VISIBLE);
             textView.setText(currentStory.getTitle());
             textView.setOnClickListener(v -> storyCallbacks.onDescriptionClickListener(position));
         }
 
-        if (!TextUtils.isEmpty(currentStory.getDescription())) {
+        if (hasDescription) {
             TextView textView = view.findViewById(R.id.txtStoryDescription);
             textView.setVisibility(View.VISIBLE);
             textView.setText(currentStory.getDescription());
             textView.setOnClickListener(v -> storyCallbacks.onDescriptionClickListener(position));
         }
 
+        view.findViewById(R.id.layoutDescription).setVisibility(
+                (hasDescription || hasTitle) ? View.VISIBLE : View.GONE
+        );
+
 
         if (!TextUtils.isEmpty(currentStory.getActText())) {
             TextView button = view.findViewById(R.id.actTitle);
             button.setVisibility(View.VISIBLE);
             button.setText(currentStory.getActText());
-            button.setOnClickListener(v-> storyCallbacks.onActClickListener(position));
+            button.setOnClickListener(v -> storyCallbacks.onActClickListener(position));
         }
 
         Glide.with(context)
                 .load(currentStory.getImageUrl())
-                .listener(new RequestListener<Drawable>() {
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .listener(new RequestListener<>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                         storyCallbacks.nextStory();
@@ -95,11 +102,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        if (resource != null) {
-                            PaletteExtraction pe = new PaletteExtraction(view.findViewById(R.id.relativeLayout),
-                                    ((BitmapDrawable) resource).getBitmap());
-                            pe.execute();
-                        }
+
                         if (!storiesStarted) {
                             storiesStarted = true;
                             storyCallbacks.startStories();

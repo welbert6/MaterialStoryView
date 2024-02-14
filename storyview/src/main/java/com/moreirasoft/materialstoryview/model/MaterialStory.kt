@@ -2,7 +2,6 @@ package com.moreirasoft.materialstoryview.model
 
 import android.content.Context
 import com.moreirasoft.materialstoryview.data.StoryPreference
-import com.moreirasoft.materialstoryview.utils.MaterialStoryViewHeaderInfo
 import java.util.Date
 
 data class MaterialStory(
@@ -11,18 +10,21 @@ data class MaterialStory(
     val actText: String?,
     val actUrl: String?,
     val title: String?,
-    val description: String?,
-    var materialStoryViewHeaderInfo: MaterialStoryViewHeaderInfo? = null,
-){
+    val description: String?
+) {
+
+    internal  fun getUniqueCode() : String{
+        return  title+date.toString()+description+imageUrl
+    }
     fun checkVisited(context: Context) {
-        StoryPreference(context).setStoryVisited(imageUrl)
+        StoryPreference(context).setStoryVisited(this)
     }
 
     fun uncheckVisited(context: Context) {
-        StoryPreference(context).setStoryNotVisited(imageUrl)
+        StoryPreference(context).setStoryNotVisited(this)
     }
 
     fun isStoryVisited(context: Context): Boolean {
-        return StoryPreference(context).isStoryVisited(imageUrl)
+        return StoryPreference(context).isStoryVisited(this)
     }
 }

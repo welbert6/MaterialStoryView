@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.format.DateUtils
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -21,17 +22,14 @@ import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.moreirasoft.materialstoryview.R
-import com.moreirasoft.materialstoryview.data.StoryPreference
 import com.moreirasoft.materialstoryview.callback.OnStoryChangedCallback
 import com.moreirasoft.materialstoryview.callback.StoryCallbacks
 import com.moreirasoft.materialstoryview.callback.StoryClickListeners
 import com.moreirasoft.materialstoryview.callback.TouchCallbacks
-import com.moreirasoft.materialstoryview.progress.StoriesProgressView
-import com.moreirasoft.materialstoryview.utils.MaterialStoryViewHeaderInfo
-import com.moreirasoft.materialstoryview.utils.PullDismissLayout
-import com.moreirasoft.materialstoryview.utils.Utils
-import com.moreirasoft.materialstoryview.utils.ViewPagerAdapter
-import java.util.Calendar
+import com.moreirasoft.materialstoryview.model.MaterialStoryViewHeaderInfo
+import com.moreirasoft.materialstoryview.presentation.adapter.ViewPagerAdapter
+import com.moreirasoft.materialstoryview.presentation.customviews.PullDismissLayout
+import com.moreirasoft.materialstoryview.presentation.progress.StoriesProgressView
 
 class StoryViewActivity private constructor() :
     DialogFragment(),
@@ -108,9 +106,14 @@ class StoryViewActivity private constructor() :
     }
 
     private fun setupStories() {
-        storiesProgressView.setStoriesCount(storiesList[currentHeaderInfo].storys.size)
+        storiesProgressView.setStoriesCount(storiesList[currentHeaderInfo].stories.size)
         storiesProgressView.setStoryDuration(duration)
-        viewPager.adapter = ViewPagerAdapter(storiesList[currentHeaderInfo].storys, context, this)
+        viewPager.adapter =
+            ViewPagerAdapter(
+                storiesList[currentHeaderInfo].stories,
+                context,
+                this
+            )
     }
 
     private fun readArguments() {
@@ -185,6 +188,12 @@ class StoryViewActivity private constructor() :
         storiesProgressView.startStories(startingIndex)
         viewPager.setCurrentItem(startingIndex, false)
         updateHeading(storiesList[currentHeaderInfo])
+        context?.let {
+            storiesList[currentHeaderInfo].stories[counter].checkVisited(it)
+            onStoryChangedCallback!!.storyStarted(storiesList[currentHeaderInfo], storiesList[currentHeaderInfo].stories[counter])
+
+        }
+
     }
 
     override fun pauseStories() {
@@ -212,7 +221,7 @@ class StoryViewActivity private constructor() :
 
     override fun nextStory() {
         counter++
-        if (counter >= storiesList[currentHeaderInfo].storys.size) {
+        if (counter >= storiesList[currentHeaderInfo].stories.size) {
             currentHeaderInfo++
             if (currentHeaderInfo >= storiesList.size) {
                 dismissAllowingStateLoss()
@@ -238,7 +247,7 @@ class StoryViewActivity private constructor() :
         activity?.startActivity(
             Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse(storiesList[currentHeaderInfo].storys[counter].actUrl),
+                Uri.parse(storiesList[currentHeaderInfo].stories[counter].actUrl),
             ),
         )
     }
@@ -260,19 +269,13 @@ class StoryViewActivity private constructor() :
             .into(titleImageView)
 
         titleTextView.text = materialStoryViewHeaderInfo.title
-        subtitleTextView.text = materialStoryViewHeaderInfo.subtitle
-        titleTextView.text = (
-            titleTextView.text
-                .toString() + " " +
-                Utils.getDurationBetweenDates(
-                    storiesList[currentHeaderInfo].storys[counter].date,
-                    Calendar.getInstance().time,
-                )
-            )
-        StoryPreference(requireContext()).setStoryVisited(storiesList[currentHeaderInfo].storys[counter].imageUrl)
+        subtitleTextView.text =
+            DateUtils.getRelativeTimeSpanString(storiesList[currentHeaderInfo].stories[counter].date.time).toString()
+
     }
 
     private fun createTimer() {
+
         timerThread = Thread(
             Runnable {
                 while (isDownClick) {
@@ -283,13 +286,8 @@ class StoryViewActivity private constructor() :
                     }
                     elapsedTime += 100
 
-                    if (elapsedTime > 600) {
-                        this@StoryViewActivity.context?.let {
-                            storiesList[currentHeaderInfo].storys[counter].checkVisited(
-                                it,
-                            )
-                        }
-                    }
+
+
 
                     if (elapsedTime >= 500 && !isPaused) {
                         isPaused = true
@@ -345,8 +343,8 @@ class StoryViewActivity private constructor() :
         if (isDownClick && elapsedTime < 500) {
             stopTimer()
             if ((height - yValue).toInt() <= 0.8 * height) {
-                if (!TextUtils.isEmpty(storiesList[currentHeaderInfo].storys[counter].title) && (height - yValue).toInt() >= 0.2 * height ||
-                    TextUtils.isEmpty((storiesList[currentHeaderInfo].storys[counter].description))
+                if (!TextUtils.isEmpty(storiesList[currentHeaderInfo].stories[counter].title) && (height - yValue).toInt() >= 0.2 * height ||
+                    TextUtils.isEmpty((storiesList[currentHeaderInfo].stories[counter].description))
                 ) {
                     if (xValue.toInt() <= width / 2) {
                         // Left

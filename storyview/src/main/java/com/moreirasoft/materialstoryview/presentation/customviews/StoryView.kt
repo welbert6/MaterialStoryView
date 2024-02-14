@@ -1,4 +1,4 @@
-package com.moreirasoft.materialstoryview.presentation
+package com.moreirasoft.materialstoryview.presentation.customviews
 
 import android.content.Context
 import android.content.res.Resources
@@ -15,13 +15,15 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.moreirasoft.materialstoryview.R
-import com.moreirasoft.materialstoryview.data.StoryPreference
 import com.moreirasoft.materialstoryview.callback.OnStoryChangedCallback
 import com.moreirasoft.materialstoryview.callback.StoryClickListeners
-import com.moreirasoft.materialstoryview.utils.MaterialStoryViewHeaderInfo
+import com.moreirasoft.materialstoryview.model.MaterialStory
+import com.moreirasoft.materialstoryview.model.MaterialStoryViewHeaderInfo
+import com.moreirasoft.materialstoryview.presentation.StoryViewActivity
 
 /**
  * Created by Welbert on 01/02/2024
@@ -31,7 +33,6 @@ class StoryView : View {
     private var currentItem: Int = 0
     private var mDuration: Int = 6000
     private var currentHeaderInfo: Int = 0
-    private var storyPreference: StoryPreference? = null
     private var mStoryImageRadiusInPx = 40
     private var mStoryIndicatorWidthInPx = 0
     private var mSpaceBetweenImageAndIndicator = 0
@@ -56,7 +57,6 @@ class StoryView : View {
     }
 
     private fun init(context: Context) {
-        storyPreference = StoryPreference(context)
         resources = context.resources
         storyImageUris = ArrayList()
 
@@ -152,9 +152,6 @@ class StoryView : View {
         mContext = activityContext
     }
 
-    fun resetStoryVisits() {
-        storyPreference!!.clearStoryPreferences()
-    }
 
     fun setImageUris(
         currentHeaderInfo: Int,
@@ -164,7 +161,7 @@ class StoryView : View {
         this.currentHeaderInfo = currentHeaderInfo
         this.currentItem = currentItem
         storyImageUris = imageUris
-        indicatorCount = imageUris[currentHeaderInfo].storys.size
+        indicatorCount = imageUris[currentHeaderInfo].stories.size
         calculateSweepAngle(indicatorCount)
         loadFirstImageBitamp()
     }
@@ -184,6 +181,8 @@ class StoryView : View {
         } else {
             Glide.with(this)
                 .asBitmap()
+                .thumbnail(0.05f)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .circleCrop()
                 .load(storyImageUris!![currentHeaderInfo].imageUrl)
                 .into(object : SimpleTarget<Bitmap?>() {
@@ -215,17 +214,18 @@ class StoryView : View {
                 .setStoriesList(storyImageUris!!)
                 .setStoryDuration(mDuration.toLong())
                 .setStoryClickListeners(object : StoryClickListeners {
-                    override fun onDescriptionClickListener(position: Int) {
-                        Toast.makeText(
-                            mContext,
-                            "Clicked: " + storyImageUris!![position],
-                            Toast.LENGTH_SHORT,
-                        ).show()
-                    }
+                    override fun onDescriptionClickListener(position: Int) {}
 
                     override fun onTitleIconClickListener(position: Int) {}
                 })
                 .setOnStoryChangedCallback(object : OnStoryChangedCallback {
+                    override fun storyStarted(
+                        headerInfo: MaterialStoryViewHeaderInfo,
+                        story: MaterialStory
+                    ) {
+                        onStoryChangedCallback?.storyStarted(headerInfo,story)
+                    }
+
                     override fun storyChanged(
                         headerInfo: MaterialStoryViewHeaderInfo,
                         storyPosition: Int,
@@ -240,6 +240,16 @@ class StoryView : View {
         }
     }
 
+    fun setSpaceBetweenImageAndIndicator(spaceWidth : Int ){
+        mSpaceBetweenImageAndIndicator = spaceWidth
+        prepareValues()
+        invalidate()
+    }
+    fun setIndicatorMiniStoryImageWidth(indicatorWidth : Int){
+        mStoryIndicatorWidthInPx = indicatorWidth
+        prepareValues()
+        invalidate()
+    }
     fun setImageRadius(radius: Int) {
         mStoryImageRadiusInPx = radius
         prepareValues()
@@ -278,8 +288,8 @@ class StoryView : View {
                 (mViewWidth - mIndicatoryOffset).toFloat(),
                 (mViewHeight - mIndicatoryOffset).toFloat(),
                 startAngle.toFloat(),
-                if (storyImageUris?.get(currentHeaderInfo)?.storys.isNullOrEmpty() ||
-                    storyImageUris?.get(currentHeaderInfo)!!.storys.size == 1
+                if (storyImageUris?.get(currentHeaderInfo)?.stories.isNullOrEmpty() ||
+                    storyImageUris?.get(currentHeaderInfo)!!.stories.size == 1
                 ) {
                     360f
                 } else {
@@ -296,7 +306,7 @@ class StoryView : View {
     }
 
     private fun getIndicatorColor(index: Int): Int {
-        return if (storyPreference!!.isStoryVisited(storyImageUris!![currentHeaderInfo].storys[index].imageUrl)) mVisitedIndicatorColor else mPendingIndicatorColor
+        return if (storyImageUris!![currentHeaderInfo].stories[index].isStoryVisited(context)) mVisitedIndicatorColor else mPendingIndicatorColor
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

@@ -6,7 +6,7 @@
     android:layout_marginEnd="10dp">
 
 
-    <com.moreirasoft.materialstoryview.presentation.StoryView
+    <com.moreirasoft.materialstoryview.presentation.customviews.StoryView
         android:id="@+id/storyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

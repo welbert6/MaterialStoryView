@@ -2,6 +2,8 @@ package com.moreirasoft.materialstoryview.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
+import com.moreirasoft.materialstoryview.model.MaterialStory
 
 /**
  * Created by Welbert on 01/02/2024
@@ -18,16 +20,18 @@ internal class StoryPreference(context: Context) {
         editor.apply()
     }
 
-    fun setStoryVisited(uri: String?) {
-        editor.putBoolean(uri, true).apply()
+    fun setStoryVisited(materialStory :MaterialStory) {
+        editor.putBoolean(materialStory.getUniqueCode(), true).apply()
+        Log.v("ISSUEVISITED", "Story = "+materialStory.getUniqueCode()+ " set to true")
+
     }
 
-    fun setStoryNotVisited(uri: String?) {
-        editor.putBoolean(uri, false).apply()
+    fun setStoryNotVisited(materialStory: MaterialStory) {
+        editor.putBoolean(materialStory.getUniqueCode(), false).apply()
     }
 
-    fun isStoryVisited(uri: String?): Boolean {
-        return preferences.getBoolean(uri, false)
+    fun isStoryVisited(materialStory: MaterialStory): Boolean {
+        return preferences.getBoolean(materialStory.getUniqueCode(), false)
     }
 
     companion object {

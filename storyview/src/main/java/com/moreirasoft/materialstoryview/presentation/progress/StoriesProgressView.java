@@ -1,4 +1,4 @@
-package com.moreirasoft.materialstoryview.progress;
+package com.moreirasoft.materialstoryview.presentation.progress;
 
 import android.annotation.TargetApi;
 import android.content.Context;

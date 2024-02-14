@@ -1,4 +1,4 @@
-package com.moreirasoft.materialstoryview.presentation
+package com.moreirasoft.materialstoryview.presentation.customviews
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -80,7 +80,7 @@ class StoryPlayerProgressView : View {
 
     private fun init(context: Context) {
         resources = context.resources
-        mScreenWidth = resources!!.getDisplayMetrics().widthPixels
+        mScreenWidth = resources!!.displayMetrics.widthPixels
         mProgressPaint = Paint()
         mProgressPaint!!.isAntiAlias = true
     }

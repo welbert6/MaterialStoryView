@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.moreirasoft.materialstoryview.utils.DynamicImageView
+    <com.moreirasoft.materialstoryview.presentation.customviews.DynamicImageView
         android:id="@+id/mImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,50 +29,51 @@
         app:layout_constraintGuide_percent="0.70" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/layoutDescription"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/bg_description_story"
-        android:minWidth="210dp"
         android:orientation="vertical"
         android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guidelineBottom">
 
         <TextView
             android:id="@+id/txtStoryTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             android:textStyle="bold"
             android:visibility="gone"
-            tools:text="Titulo"
+            tools:text="Manuntenção preventiva"
             tools:visibility="visible" />
 
 
         <TextView
             android:id="@+id/txtStoryDescription"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:visibility="gone"
-            tools:text="Essa é a descrição do story, e você pode encher aqui de bla bla bla, pq na realidade muitas pessoas não leem essa bosta"
-            tools:visibility="visible" />
+            tools:text="Essa é a descrição do story, e você pode encher aqui de bla bla bla, pq na realidade muitas pessoas não leem essa bosta" />
 
         <TextView
             android:id="@+id/actTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:background="@drawable/bg_story_button"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
             android:visibility="gone"
             tools:text="VISITAR SITE"
-            android:background="@drawable/bg_story_button"
-            android:textStyle="bold"
-            android:textColor="#FFF"
             tools:visibility="visible" />
 
     </LinearLayout>

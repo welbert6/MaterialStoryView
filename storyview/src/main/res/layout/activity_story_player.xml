@@ -19,7 +19,7 @@
         android:background="#000000"
         android:padding="4dp">
 
-        <com.moreirasoft.materialstoryview.presentation.StoryPlayerProgressView
+        <com.moreirasoft.materialstoryview.presentation.customviews.StoryPlayerProgressView
             android:id="@+id/progressBarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
