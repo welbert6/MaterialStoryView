@@ -4,7 +4,7 @@
 ![Screenshots](images/Screenshot_7.png)
 
 
-![Screenshots](images/screenshots.jpg)
+![Screenshots](images/Screenshot1.png)
 
 ## Introduction
 
