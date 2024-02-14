@@ -73,7 +73,7 @@ carrosselStoryView.addStory(getCminStories())
 carrosselStoryView.addStories(getModelStorys())
 ````
 
-##### Customization
+#### Customization
 
 
 MaterialStoryView offers various customization options through XML attributes, allowing for modifications of:
@@ -85,6 +85,31 @@ MaterialStoryView offers various customization options through XML attributes, a
     Story duration
 
 For more details on customization options, refer to the available options in the declare-styleable XML attributes section.
+
+<declare-styleable name="MaterialCarouselStoryView">
+        <attr name="miniStoryTextSize" format="dimension"/> 
+        <attr name="miniStoryTextColor" format="color"/>
+        <attr name="miniStoryTextFont" format="reference"/>
+        <attr name="miniStoryVisitedIndicatorColor" format="color"/>
+        <attr name="miniStoryPendingIndicatorColor" format="color"/>
+        <attr name="miniStoryImageRadius" format="dimension"/>
+        <attr name="miniStorySpaceBetweenImageAndIndicator" format="dimension"/>
+        <attr name="miniStoryItemIndicatorWidth" format="dimension"/>
+        <attr name="storyProgressBarPrimaryColor" format="color"/>
+        <attr name="storyProgressBarSecondaryColor" format="color"/>
+        <attr name="storyProgressBarHeight" format="dimension"/>
+        <attr name="storyGapBetweenProgressBar" format="dimension"/>
+        <attr name="storySingleStoryDisplayTime" format="integer"/>
+        <attr name="storyDuration" format="integer"/>
+    </declare-styleable>
+
+   - miniStoryTextSize (Mini Story Text Size): Sets the text size of mini story captions, allowing customization of text scale for better readability.
+   - miniStoryTextColor (Mini Story Text Color): Specifies the text color for mini story captions, offering the ability to match the text color with the app theme.
+   - miniStoryTextFont (Mini Story Text Font): Allows setting the text font for mini stories through a reference, enabling typography customization to align with the visual identity.
+   - miniStoryVisitedIndicatorColor (Mini Story Visited Indicator Color): Defines the indicator color for stories that have been viewed by the user, helping distinguish between new and reviewed content.
+   - miniStoryPendingIndicatorColor (Mini Story Pending Indicator Color): Specifies the indicator color for stories that have not yet been viewed, facilitating the identification of new content.
+   - miniStoryImageRadius (Mini Story Image Radius): Determines the radius of images in mini stories, allowing the corners of images to be rounded for a softer look.
+   - miniStorySpaceBetweenImageAndIndicator (Space Between Mini Story Image and Indicator): Sets the space
 
  
  ## Credit 
