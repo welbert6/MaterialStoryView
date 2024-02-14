@@ -4,12 +4,22 @@
 
 ![Screenshots](images/screenshots.jpg)
 
+##Introduction
 
+MaterialStoryView is an Android library for implementing a story carousel, similar to those found on social networks like Instagram and Facebook. This library makes it easy to add a story viewing component to your Android application, allowing for quick and simple integration. 
 
-## Release notes
+✅ Saves story as seen in SharedPreferences: Ensures users don’t repeatedly see the same story, enhancing user experience.
 
-* V1.0.6-alpha: RTL Support
-* V1.0.2-alpha: Migrated to Java 8, Added OnStoryChangedListener, and Starting the stories from a predefined index
+✅ Action button on story: Allows for direct interactions, such as visiting a link or performing a specific action, right from the story.
+
+✅ Navigation between stories by tapping on the right and left side of the screen: Makes navigating through stories easy, letting users advance or go back with a simple tap.
+
+✅ Supports RTL and LTR: Accommodates users of languages that are read from right to left (RTL) and left to right (LTR), ensuring a global and inclusive user experience.
+
+✅ Supports stories with and without titles: Offers flexibility to display stories both with titles for context and without titles for a cleaner design.
+
+✅ 100% Customization: Allows full customization of the story appearance, including duration, indicator color, image radius size, text color, etc., to perfectly match your application’s visual identity.
+
 
 ## Setup
 
@@ -27,173 +37,73 @@ allprojects {
 Add the dependency:
 ```
 dependencies {
-	        implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
+	       	        implementation 'com.github.welbert6:MaterialStoryView:1.0.0'
 	}
 ```
-#### 2. Create the StoryView
+#### 2. Usage 
 
-You have two options, the first one is to use the same header (what I mean by header is the logo, title and the subtitle) for all the images in the story, or to define a custom header for each image.
-Let's start first by creating the stories.
-
-##### A. Constructing the Stories
-
-
-You have to pass to the library's builder an ArrayList of 'MyStory' where MyStory represents a single story (clearly) and contains the following members:
-
-* String url (Required/NotNull): The link of the image
-
-* Date date (Optional/Nullable): The date when the story got posted (If you have the date as a String, use a SimpleDateFormat to parse it into a Date object)
-
-* String description (Optional/Nullable): The description of the story which gets displayed as shown in the screenshot below:
-
-<p align="center">
-<img src="images/screenshot1.jpg" width="300" height="500">
-</p>
-
-**If you don't want to display a description along with the image just pass the description as null or as an empty String and it will not be displayed.**
-
-* Example code:
-
-```java
-MyStory currentStory = new MyStory(
-                    "dummy-link",
-                    simpleDateFormat.parse("20-10-2019 10:00:00"),
-                    null
-            );
-```
-
-**Another option is to use the second constructor which takes the url and the date only.**
-* Example code:
-
-```java
- MyStory currentStory = new MyStory(
-                    "dummy-link",
-                    simpleDateFormat.parse("20-10-2019 10:00:00"),
-            );
-```
-
-Now, lets construct the Stories ArrayList:
-
-Assume we have an ArrayList of 'Story' where the single 'Story' contains the fields (imageUrl & date):
-
-```java
-
-ArrayList<Story> data = ....;
-...
-ArrayList<MyStory> myStories = new ArrayList<>();
-
-for(Story story: data){
-	myStories.add(new MyStory(
-                    story.getImageUrl(),
-                    story.getDate()
-            ));
-}
+Add CarouselStoryView to your XML layout:
+```xml 
+<com.moreirasoft.materialstoryview.presentation.customviews.CarouselStoryView
+    android:id="@+id/carouselStoryView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    app:miniStoryTextColor="#000"
+    app:miniStoryImageRadius="36dp"
+    app:miniStorySpaceBetweenImageAndIndicator="2dp"
+    app:miniStoryItemIndicatorWidth="3dp"
+    app:storyDuration="6000" />
 
 ```
+#### Initialize and configure CarouselStoryView in your Activity:
 
-Simple! Right?
-
-#### B. Construction the Header(s)
-
-##### B.1 Option one (The same header for all the images)
 
 ```java
-new StoryView.Builder(getSupportFragmentManager())
-                .setStoriesList(myStories) // Required
-                .setStoryDuration(5000) // Default is 2000 Millis (2 Seconds)
-                .setTitleText("Hamza Al-Omari") // Default is Hidden
-                .setSubtitleText("Damascus") // Default is Hidden
-                .setTitleLogoUrl("some-link") // Default is Hidden
-                .setStoryClickListeners(new StoryClickListeners() {
-                    @Override
-                    public void onDescriptionClickListener(int position) {
-		    	//your action
-                    }
+val carrosselStoryView: CarouselStoryView = findViewById(R.id.carouselStoryView)
 
-                    @Override
-                    public void onTitleIconClickListener(int position) {
-                        //your action
-		    }
-                }) // Optional Listeners
-                .build() // Must be called before calling show method
-                .show();
+//Ensure to call init With Activity to init lib
+carrosselStoryView.initWithActivity(this)
 
-```
+// You can addStory or addStories with you have a list of stories 
+carrosselStoryView.addStory(getCopasaStories())
+carrosselStoryView.addStory(getCemigStories())
+carrosselStoryView.addStory(getCminStories())
+carrosselStoryView.addStories(getModelStorys())
+````
 
-##### B.2 Option two (Custom header for each image)
+##### Customization
 
-This process is similar to the process of constructing the stories list, instead we have to create an ArrayList of 'StoryViewHeaderInfo' which contains the following fields:
 
-* String title
+MaterialStoryView offers various customization options through XML attributes, allowing for modifications of:
 
-* String subtitle
+    Text size and color
+    Colors of visited and pending story indicators
+    Story image radius
+    Story item indicator width
+    Story duration
 
-* String titleIconUrl
-
-Let's construct the ArrayList<StoryViewHeadeInfo>:
-	
-Assume the same previous example (the ArrayList of Story) but each story in this list has a different person who posted it. 
-Now the story contains these additional fields (username: String, userLocation: String, userImageUrl: String)
-	
-```java
-
-ArrayList<StoryViewHeaderInfo> headerInfoArrayList = new ArrayList<>();
-
-for (Story story : data) {
-            headerInfoArrayList.add(new StoryViewHeaderInfo(
-                    story.getUsername(),
-                    story.getUserLocation(),
-                    story.getUserImageUrl()
-            ));
-        }
-
-```
-
-##### B.3 Finally, pass the ArrayList<StoryViewHeaderInfo> to the Builder:
-	
-```java
-new StoryView.Builder(getSupportFragmentManager())
-                .setStoriesList(myStories) // MyStory's ArrayList
-                .setStoryDuration(5000) // Optional, default is 2000 Millis
-                .setHeadingInfoList(headerInfoArrayList) // StoryViewHeaderInfo's ArrayList
-                .setStoryClickListeners(new StoryClickListeners() {
-                    @Override
-                    public void onDescriptionClickListener(int position) {
-                        // your action
-                    }
-
-                    @Override
-                    public void onTitleIconClickListener(int position) {
-                    	// your action
-		    }
-                }) // Optional Listeners
-                .build() // Must be called before show method
-                .show();
-		
-```
-	
-And that's it!!
+For more details on customization options, refer to the available options in the declare-styleable XML attributes section.
 
  
  ## Credit 
- 
- [shts/StoriesProgressView](https://github.com/shts/StoriesProgressView): This Library was used to display the progress of the stories
- 
+
+ [shts/StoriesProgressView](https://github.com/OMARIHAMZA/StoryView): This Library was used to display the progress of the stories
+
 
 ## Developed By
-#### Mhd Hamza Al Omari
-* [LinkedIn](https://www.linkedin.com/in/omarihamza/)
-* omarihamza@outlook.com
+#### Welbert Moreira
+* [LinkedIn](https://www.linkedin.com/in/welbertim/)
 
-Please feel free to suggest any new features to be added to the Library.
+Feel free to contribute improvements, bug fixes, or new features. Your contribution is welcome!
 
 
 ## License
 ```
 MIT License
 
-Copyright (c) 2019 MHD HAMZA AL OMARI
-
+Copyright (c) 2024 Welbert Moreira 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
