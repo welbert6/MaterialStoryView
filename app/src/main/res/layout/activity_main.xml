@@ -13,12 +13,12 @@
             android:layout_margin="10dp"
             android:textSize="20sp"
             android:textColor="#000"
-            android:text="Example of storys"/>
+            android:text="Material StoryView"/>
 
 
 
-        <com.moreirasoft.materialstoryview.presentation.CarouselStoryView
-            android:id="@+id/sqwfrwe"
+        <com.moreirasoft.materialstoryview.presentation.customviews.CarouselStoryView
+            android:id="@+id/carouselStoryView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -29,11 +29,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:miniStoryTextColor="#000"
-            app:miniStoryPendingIndicatorColor="#7B1FA2"
             app:miniStoryImageRadius="36dp"
-            app:miniSpaceBetweenImageAndIndicator="1dp"
-            app:miniStoryItemIndicatorWidth="1.5dp"
-            app:storyDuration="16000"
+            app:miniStorySpaceBetweenImageAndIndicator="2dp"
+            app:miniStoryItemIndicatorWidth="3dp"
+            app:storyDuration="6000"
             tools:listitem="@layout/item_mini_story"/>
 
 </LinearLayout>
