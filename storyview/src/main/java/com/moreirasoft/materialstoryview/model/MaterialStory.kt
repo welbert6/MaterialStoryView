@@ -2,6 +2,7 @@ package com.moreirasoft.materialstoryview.model
 
 import android.content.Context
 import com.moreirasoft.materialstoryview.data.StoryPreference
+import java.io.Serializable
 import java.util.Date
 
 data class MaterialStory(
@@ -11,7 +12,7 @@ data class MaterialStory(
     val actUrl: String?,
     val title: String?,
     val description: String?
-) {
+) : Serializable {
 
     internal  fun getUniqueCode() : String{
         return  title+date.toString()+description+imageUrl
