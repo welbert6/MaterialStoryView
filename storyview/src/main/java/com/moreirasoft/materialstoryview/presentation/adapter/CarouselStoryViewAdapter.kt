@@ -22,7 +22,6 @@ import com.moreirasoft.materialstoryview.presentation.customviews.StoryView
  */
 internal class CarouselStoryViewAdapter(
     private val activity: Activity,
-
     private val styleMaterialCarouselStoryView: StyleMaterialCarouselStoryView,
 ) : RecyclerView.Adapter<CarouselStoryViewAdapter.CarouselStoryViewViewHolder>(),
     OnStoryChangedCallback {
@@ -111,8 +110,10 @@ internal class CarouselStoryViewAdapter(
     }
 
     fun addStory(materialStoryViewHeaderInfo: MaterialStoryViewHeaderInfo) {
-        listStoryViewHeader.add(materialStoryViewHeaderInfo)
-        notifyItemInserted(listStoryViewHeader.indexOf(materialStoryViewHeaderInfo))
+        if (materialStoryViewHeaderInfo.stories.isNotEmpty()){
+            listStoryViewHeader.add(materialStoryViewHeaderInfo)
+            notifyItemInserted(listStoryViewHeader.indexOf(materialStoryViewHeaderInfo))
+        }
     }
 
     fun addStories(materialStoryViewHeaderInfo: ArrayList<MaterialStoryViewHeaderInfo>) {
