@@ -193,7 +193,6 @@ class StoryViewActivity private constructor() :
             onStoryChangedCallback!!.storyStarted(storiesList[currentHeaderInfo], storiesList[currentHeaderInfo].stories[counter])
 
         }
-
     }
 
     override fun pauseStories() {

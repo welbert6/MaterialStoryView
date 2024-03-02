@@ -172,10 +172,10 @@ class CarouselStoryView(context: Context, attrs: AttributeSet?) : RecyclerView(c
         return adapter?.itemCount == 0
     }
     fun getItemCount(): Int {
-        if (adapter == null)
-            return 0
+        return if (adapter == null)
+            0
         else
-            return (adapter as CarouselStoryViewAdapter).itemCount
+            (adapter as CarouselStoryViewAdapter).itemCount
     }
 
     fun clear() {
