@@ -222,7 +222,10 @@ public class StoriesProgressView extends LinearLayout {
         for (int i = 0; i < from; i++) {
             progressBars.get(i).setMaxWithoutCallback();
         }
-        progressBars.get(from).startProgress();
+        if (progressBars.size()>from){
+            progressBars.get(from).startProgress();
+
+        }
     }
 
     /**

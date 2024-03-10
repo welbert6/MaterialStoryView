@@ -32,16 +32,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.18" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:paddingBottom="50dp"
-            android:src="@drawable/topbgheaderstory"
-            app:layout_constraintBottom_toBottomOf="@id/guidelineTop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
 
         <com.moreirasoft.materialstoryview.presentation.progress.StoriesProgressView
