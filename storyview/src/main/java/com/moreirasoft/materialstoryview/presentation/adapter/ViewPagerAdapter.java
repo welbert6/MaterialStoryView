@@ -102,11 +102,15 @@ public class ViewPagerAdapter extends PagerAdapter {
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        try{
+                            if ( !storiesStarted) {
+                                storiesStarted = true;
+                                storyCallbacks.startStories();
+                            }
+                        }catch (Exception ignored ){
 
-                        if (!storiesStarted) {
-                            storiesStarted = true;
-                            storyCallbacks.startStories();
                         }
+
                         return false;
                     }
                 })

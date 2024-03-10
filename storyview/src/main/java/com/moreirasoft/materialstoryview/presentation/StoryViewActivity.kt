@@ -191,7 +191,6 @@ class StoryViewActivity private constructor() :
         context?.let {
             storiesList[currentHeaderInfo].stories[counter].checkVisited(it)
             onStoryChangedCallback!!.storyStarted(storiesList[currentHeaderInfo], storiesList[currentHeaderInfo].stories[counter])
-
         }
     }
 
