@@ -4,11 +4,9 @@
 Você pode ler em português ([https://github.com/welbert6/MaterialStoryView/edit/master/ReadmePT.md](https://github.com/welbert6/MaterialStoryView/blob/master/ReadmePT.md))
 
 ## Screenshots
-![Screenshots](images/Screenshot_7.png)
 
-
-
-<img src="images/Screenshot1.png" width="480">
+<img src="images/Screenshot_7.png" width="280">
+<img src="images/Screenshot1.png" width="280">
 
 ## Introduction
 
@@ -41,10 +39,12 @@ allprojects {
 	}
 ```
 Add the dependency:
+Latest version => [![](https://jitpack.io/v/welbert6/MaterialStoryView.svg)](https://jitpack.io/#welbert6/MaterialStoryView)
 ```
+
 dependencies {
-	       	        implementation 'com.github.welbert6:MaterialStoryView:1.0.0'
-	}
+    implementation 'com.github.welbert6:MaterialStoryView:$latest'
+}
 ```
 #### 2. Usage 
 
@@ -60,6 +60,7 @@ Add CarouselStoryView to your XML layout:
     app:miniStoryImageRadius="36dp"
     app:miniStorySpaceBetweenImageAndIndicator="2dp"
     app:miniStoryItemIndicatorWidth="3dp"
+    app:storyButtonActionBackgroundColor="#74C32F" 
     app:storyDuration="6000" />
 
 ```
@@ -103,6 +104,7 @@ For more details on customization options, refer to the available options in the
         <attr name="miniStoryItemIndicatorWidth" format="dimension"/>
         <attr name="storyProgressBarPrimaryColor" format="color"/>
         <attr name="storyProgressBarSecondaryColor" format="color"/>
+	<attr name="storyButtonActionBackgroundColor" format="color"/>
         <attr name="storyProgressBarHeight" format="dimension"/>
         <attr name="storyGapBetweenProgressBar" format="dimension"/>
         <attr name="storySingleStoryDisplayTime" format="integer"/>
@@ -116,7 +118,18 @@ For more details on customization options, refer to the available options in the
    - miniStoryPendingIndicatorColor (Mini Story Pending Indicator Color): Specifies the indicator color for stories that have not yet been viewed, facilitating the identification of new content.
    - miniStoryImageRadius (Mini Story Image Radius): Determines the radius of images in mini stories, allowing the corners of images to be rounded for a softer look.
    - miniStorySpaceBetweenImageAndIndicator (Space Between Mini Story Image and Indicator): Sets the space
+   - storyButtonActionBackgroundColor Set the background color of the button to Action
 
+
+#### Change Read More Text 
+
+Create a string value on your strings.xml like this: 
+
+```xml
+ <string name="msv_read_more">Read More</string>
+````
+
+Change the value that you want...
  
  ## Credit 
 
