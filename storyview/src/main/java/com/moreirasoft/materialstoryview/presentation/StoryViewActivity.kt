@@ -111,7 +111,7 @@ class StoryViewActivity private constructor() :
         viewPager.adapter =
             ViewPagerAdapter(
                 storiesList[currentHeaderInfo].stories,
-                context,
+                this,
                 this
             )
     }
@@ -169,6 +169,15 @@ class StoryViewActivity private constructor() :
         params.width = ViewGroup.LayoutParams.MATCH_PARENT
         params.height = ViewGroup.LayoutParams.MATCH_PARENT
         dialog!!.window!!.attributes = params
+
+        if (isPaused){
+            isPaused = false
+            requireActivity().runOnUiThread {
+                storiesProgressView.resume()
+            }
+        }
+
+
     }
 
     override fun onNext() {
@@ -289,7 +298,8 @@ class StoryViewActivity private constructor() :
 
                     if (elapsedTime >= 500 && !isPaused) {
                         isPaused = true
-                        if (activity == null) return@Runnable
+                        if (activity == null)
+                            return@Runnable
                         requireActivity().runOnUiThread {
                             storiesProgressView.pause()
                         }
@@ -322,6 +332,18 @@ class StoryViewActivity private constructor() :
     override fun onShouldInterceptTouchEvent(): Boolean {
         return false
     }
+
+
+    override fun onPause() {
+        isPaused = true
+        if (activity == null)
+            return
+        requireActivity().runOnUiThread {
+            storiesProgressView.pause()
+        }
+        super.onPause()
+    }
+
 
     override fun touchPull() {
         elapsedTime = 0
@@ -428,6 +450,16 @@ class StoryViewActivity private constructor() :
             return this
         }
 
+        fun setPreferences(preferences : HashMap<String, Any>): Builder {
+            preferences.forEach { (key, value) ->
+                bundle.putInt(key, value as Int)
+            }
+
+
+            return this
+        }
+
+
         fun show() {
             storyViewActivity.show(fragmentManager, TAG)
         }
@@ -435,6 +467,7 @@ class StoryViewActivity private constructor() :
         fun dismiss() {
             storyViewActivity.dismiss()
         }
+
 
         val fragment: Fragment?
             get() = storyViewActivity

@@ -6,9 +6,5 @@
         android:endColor="#E6000000"
         android:startColor="#C9000000" />
 
-    <stroke android:width="2dp" android:color="#000000"/>
 
-    <corners
-        android:bottomRightRadius="20dp"
-        android:topRightRadius="20dp" />
 </shape>

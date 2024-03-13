@@ -11,6 +11,7 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 34
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -27,8 +28,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
 }
@@ -42,6 +43,12 @@ project.afterEvaluate {
                 artifact("$buildDir/outputs/aar/storyview-release.aar")
             }
         }
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 
@@ -60,6 +67,8 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.palette:palette-ktx:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
+
+    implementation 'com.github.colourmoon:readmore-textview:v1.0.2'
 
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {

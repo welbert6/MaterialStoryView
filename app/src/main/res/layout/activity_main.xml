@@ -13,7 +13,7 @@
             android:layout_margin="10dp"
             android:textSize="20sp"
             android:textColor="#000"
-            android:text="Material StoryView"/>
+            android:text="@string/app_name"/>
 
 
 
@@ -33,6 +33,7 @@
             app:miniStorySpaceBetweenImageAndIndicator="2dp"
             app:miniStoryItemIndicatorWidth="3dp"
             app:storyDuration="6000"
+            app:storyButtonActionBackgroundColor="#74C32F"
             tools:listitem="@layout/item_mini_story"/>
 
 </LinearLayout>

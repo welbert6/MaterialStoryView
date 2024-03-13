@@ -72,10 +72,10 @@ class MainActivity : AppCompatActivity() {
             MaterialStory(
                 Date(1707891031887),
                 "https://scontent.fqsc1-1.fna.fbcdn.net/v/t1.6435-9/133848727_1659175390936860_7779711853011003428_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeFvT-bsdkniVfz8t5FW-_nn-uHzzVpu1RT64fPNWm7VFIi2Tln4jcuSPOwBtDj--p9QNSg3t5Lohms4VoRGSQB_&_nc_ohc=Wou4d0SJieIAX-7aTaz&_nc_ht=scontent.fqsc1-1.fna&oh=00_AfCjy9xT9JCL9BU86Xo9tOVRxTToBRZTCFvM8u_MEz1IjA&oe=65F3744F",
-                null,
-                null,
-                null,
-                null,
+                "Visit the site",
+                "https://www.google.com.br",
+                "Lorem Ipsum is simply",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
             ),
         )
 
