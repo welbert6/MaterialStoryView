@@ -75,7 +75,7 @@ afterEvaluate {
                 from components.release
                 groupId "com.github.welbert6"
                 artifactId "materialstoryview"
-                version "0.0.37-SNAPSHOT"
+                version "1.0.12"
                 artifact("$buildDir/outputs/aar/storyview-release.aar")
             }
         }
@@ -88,7 +88,7 @@ project.afterEvaluate {
             bar(MavenPublication) {
                 groupId "com.github.welbert6"
                 artifactId "materialstoryview"
-                version "0.0.37-SNAPSHOT"
+                version "1.0.12"
                 artifact("$buildDir/outputs/aar/storyview-release.aar")
             }
         }
