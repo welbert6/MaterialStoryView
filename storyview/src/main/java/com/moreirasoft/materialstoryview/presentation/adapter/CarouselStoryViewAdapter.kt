@@ -63,6 +63,7 @@ internal class CarouselStoryViewAdapter(
             this.storyView.setImageRadius(styleMaterialCarouselStoryView.miniStoryImageRadius)
             this.storyView.setDuration(styleMaterialCarouselStoryView.storyDuration)
             this.storyView.setActivityContext(activity as AppCompatActivity)
+            this.storyView.setButtonActionBackgroundColor(styleMaterialCarouselStoryView.storyButtonActionBackgroundColor)
             this.itemView.invalidate()
             this.storyView.addOnStoryChangedCallback(this@CarouselStoryViewAdapter)
         }

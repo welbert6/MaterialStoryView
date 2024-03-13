@@ -12,7 +12,6 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -38,6 +37,7 @@ class StoryView : View {
     private var mSpaceBetweenImageAndIndicator = 0
     private var mPendingIndicatorColor = 0
     private var mVisitedIndicatorColor = 0
+    private var storyButtonActionBackgroundColor = Color.GREEN
     private var mViewWidth = 0
     private var mViewHeight = 0
     private var mIndicatoryOffset = 0
@@ -213,6 +213,9 @@ class StoryView : View {
             StoryViewActivity.Builder(mContext?.supportFragmentManager!!)
                 .setStoriesList(storyImageUris!!)
                 .setStoryDuration(mDuration.toLong())
+                .setPreferences(HashMap<String,Any>().apply {
+                    put("storyButtonActionBackgroundColor",storyButtonActionBackgroundColor)
+                })
                 .setStoryClickListeners(object : StoryClickListeners {
                     override fun onDescriptionClickListener(position: Int) {}
 
@@ -315,6 +318,12 @@ class StoryView : View {
         val w = resolveSizeAndState(width, widthMeasureSpec, 0)
         val h = resolveSizeAndState(height, heightMeasureSpec, 0)
         setMeasuredDimension(w, h)
+    }
+
+    fun setButtonActionBackgroundColor(storyButtonActionBackgroundColor: Int) {
+        this.storyButtonActionBackgroundColor = storyButtonActionBackgroundColor
+        prepareValues()
+        invalidate()
     }
 
     companion object {

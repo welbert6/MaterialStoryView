@@ -36,5 +36,6 @@
         <attr name="storyGapBetweenProgressBar" format="dimension"/>
         <attr name="storySingleStoryDisplayTime" format="integer"/>
         <attr name="storyDuration" format="integer"/>
+        <attr name="storyButtonActionBackgroundColor" format="color"/>
     </declare-styleable>
 </resources>

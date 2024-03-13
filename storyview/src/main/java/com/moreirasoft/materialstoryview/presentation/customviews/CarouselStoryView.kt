@@ -68,10 +68,18 @@ class CarouselStoryView(context: Context, attrs: AttributeSet?) : RecyclerView(c
 
 
 
+
+            val buttonActionBackgroundColor = ats.getColor(
+                R.styleable.MaterialCarouselStoryView_storyButtonActionBackgroundColor,
+                Color.GREEN
+            )
+
+
             styleMaterialCarouselStoryView = StyleMaterialCarouselStoryView(
                 miniStoryTextSize = miniStoryTextSize.toFloat(),
                 miniStoryTextColor = miniStoryTextColor,
                 miniStoryImageRadius = miniStoryImageRadius,
+                storyButtonActionBackgroundColor = buttonActionBackgroundColor,
                 miniVisitedIndicatorColor = miniVisitedIndicatorColor,
                 miniPendingIndicatorColor = miniPendingIndicatorColor,
                 miniStoryItemIndicatorWidth = miniStoryItemIndicatorWidth,
