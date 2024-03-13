@@ -33,18 +33,6 @@ android {
     }
 
 }
-project.afterEvaluate {
-    publishing {
-        publications {
-            bar(MavenPublication) {
-                groupId "com.github.welbert6"
-                artifactId "materialstoryview"
-                version "0.0.36-SNAPSHOT"
-                artifact("$buildDir/outputs/aar/storyview-release.aar")
-            }
-        }
-    }
-}
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
@@ -85,12 +73,26 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId "com.moreirasoft"
+                groupId "com.github.welbert6"
                 artifactId "materialstoryview"
-                version "0.0.0"
-                //artifact("$buildDir/outputs/aar/storyview-release.aar")
+                version "0.0.37-SNAPSHOT"
+                artifact("$buildDir/outputs/aar/storyview-release.aar")
             }
         }
     }
 }
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            bar(MavenPublication) {
+                groupId "com.github.welbert6"
+                artifactId "materialstoryview"
+                version "0.0.37-SNAPSHOT"
+                artifact("$buildDir/outputs/aar/storyview-release.aar")
+            }
+        }
+    }
+}
+
 
