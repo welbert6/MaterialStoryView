@@ -1,5 +1,5 @@
 <dependency>
-    <groupId>com.moreirasoft</groupId>
-    <artifactId>materialstoryview</artifactId>
-    <version>0.0.0</version>
+    <groupId>com.github.colourmoon</groupId>
+    <artifactId>readmore-textview</artifactId>
+    <version>v1.0.2</version>
 </dependency>
