@@ -67,6 +67,7 @@
             android:textStyle="bold"
             android:visibility="gone"
             tools:text="VISITAR SITE"
+            android:gravity="center_vertical"
             android:paddingEnd="20dp"
             android:drawablePadding="20dp"
             android:drawableTint="@color/white"
